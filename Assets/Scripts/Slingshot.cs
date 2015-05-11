@@ -33,8 +33,9 @@ public class Slingshot : MonoBehaviour {
 	}
 
 	void OnMouseExit(){
-
-		launchPoint.SetActive(false);
+		if (!aimingMode) {
+			launchPoint.SetActive (false);
+		}
 		print ("onmouseExit");
 	}
 
@@ -79,15 +80,18 @@ public class Slingshot : MonoBehaviour {
 		projectile.transform.position = launchPos + mouseDelta;
 
 
-		//check mouse button released
+
+		//check mouse button released  //fire it off!! Baaaaammmmmm!!!
 		if (Input.GetMouseButtonUp(0)) {
 			aimingMode = false;
+			launchPoint.SetActive(false);
 			projectile.GetComponent<Rigidbody> ().isKinematic = false;
 			projectile.GetComponent<Rigidbody> ().velocity = -mouseDelta * velocityMult;
+			CamFollow.s.poi = projectile;
 		}
 
 
-		//fire it off!! Baaaaammmmmm!!!
+
 
 
 	}
