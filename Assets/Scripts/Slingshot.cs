@@ -4,11 +4,16 @@ using System.Collections;
 public class Slingshot : MonoBehaviour {
 
 	//Inspector fields
-	public GameObject prefabProjectile;
+	public GameObject defaultProjectilePrefab;
 
 	public float velocityMult;
 
+	private bool shotProjectile;
+
+	private GameObject oldProjectile;
 	//internal fields
+	private GameObject prefabProjectile;
+
 	private GameObject launchPoint;
 	private bool aimingMode;
 
@@ -21,30 +26,45 @@ public class Slingshot : MonoBehaviour {
 		launchPoint = launchPointTrans.gameObject;
 		launchPoint.SetActive (false);
 		launchPos = launchPoint.transform.position;
+
+		prefabProjectile = defaultProjectilePrefab;
 	}
 
 
 	void OnMouseEnter(){  
 	
 		launchPoint.SetActive(true);
-		print ("onmouseenter");
+		//Debug.Log ("onmouseenter");
+	}
 
-
+	public void selectProjectile(GameObject prefab){
+		prefabProjectile = prefab;
 	}
 
 	void OnMouseExit(){
 		if (!aimingMode) {
 			launchPoint.SetActive (false);
 		}
-		print ("onmouseExit");
+		//Debug.Log ("onmouseExit");
 	}
 
 	void OnMouseDown(){ 
+		if (prefabProjectile == null) {
+			Debug.Log ("no projectile assigned!");
+			return;
+		}
 		//player can aim
 		aimingMode = true;
 
 		//instantiate a projectile
 		projectile = Instantiate (prefabProjectile) as GameObject; //would be just an Object otherwise
+
+		if (oldProjectile == null) {
+			oldProjectile = projectile;
+		} else {
+			Destroy (oldProjectile);
+			oldProjectile= projectile;
+		}
 
 
 		//position of projectile at launchpoint
@@ -88,6 +108,7 @@ public class Slingshot : MonoBehaviour {
 			projectile.GetComponent<Rigidbody> ().isKinematic = false;
 			projectile.GetComponent<Rigidbody> ().velocity = -mouseDelta * velocityMult;
 			CamFollow.s.poi = projectile;
+			shotProjectile = true;
 		}
 
 

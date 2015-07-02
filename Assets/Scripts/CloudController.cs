@@ -61,7 +61,7 @@ public class CloudController : MonoBehaviour {
 			//Add the cloud to our cloudInstances
 			cloudInstances [i] = cloud;
 		}
-		Debug.Log (cloudInstances.Length);
+//		Debug.Log (cloudInstances.Length);
 	}
 
 		void Update(){

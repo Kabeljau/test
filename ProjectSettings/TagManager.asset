@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - CloudParent
+  - Projectile
+  - Slingshot
+  - Goal
+  - Empty
+  - Launchpoint
+  - Obstacle
   layers:
   - Default
   - TransparentFX

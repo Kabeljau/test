@@ -6,11 +6,11 @@ PhysicMaterial:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Phy_Mat_Projectile
-  dynamicFriction: .100000001
-  staticFriction: 1.21000004
+  dynamicFriction: 0
+  staticFriction: 0
   bounciness: 1
   frictionCombine: 0
   bounceCombine: 0
-  frictionDirection2: {x: 1, y: 0, z: 0}
-  dynamicFriction2: 8.05000019
+  frictionDirection2: {x: 0, y: 0, z: 0}
+  dynamicFriction2: 0
   staticFriction2: 0
