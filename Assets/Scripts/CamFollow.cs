@@ -8,6 +8,8 @@ public class CamFollow : MonoBehaviour {
 	//camera following script needs a point of interest, which it can follow
 	public  GameObject poi; //don't make it public since it might change during runtime(e.g. next projectile)-->change via script
 
+	public GameObject GO_left; //needed to calculate the middle--> to be able to see everything
+	public GameObject GO_right;
 
 	private float CamZ;
 	private float minCamY;
@@ -40,7 +42,11 @@ public class CamFollow : MonoBehaviour {
 
 		Debug.Log (slingshot);
 
-		setEmptyToMiddle ();
+		if (GO_left == null) {
+			setEmptyToMiddle ();
+		} else {
+			setEmptyToMiddle(GO_left, GO_right);
+		}
 
 
 	}
@@ -89,7 +95,7 @@ public class CamFollow : MonoBehaviour {
 
 		this.GetComponent<Camera> ().orthographicSize = 10 + destination.y;
 		if (poi == empty) {
-			this.GetComponent<Camera> ().orthographicSize = getSize () + destination.y + 2;
+			this.GetComponent<Camera> ().orthographicSize = getSize ()  + 2;
 		}
 		
 
@@ -100,6 +106,14 @@ public class CamFollow : MonoBehaviour {
 		Debug.Log ("sets poi");
 	}
 
+
+	private void setEmptyToMiddle(GameObject A, GameObject B){
+		Vector3 a = A.transform.position;
+		Vector3 b = B.transform.position;
+		Vector3 middle = (a+b)/2;
+		empty.transform.position = middle;
+		//Instantiate (goal, middle, new Quaternion(0, 0, 0, 0));
+	}
 
 	private void setEmptyToMiddle(){
 		Vector3 s = slingshot.transform.position;

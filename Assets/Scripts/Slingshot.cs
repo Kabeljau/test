@@ -12,7 +12,7 @@ public class Slingshot : MonoBehaviour {
 
 	private GameObject oldProjectile;
 	//internal fields
-	private GameObject prefabProjectile;
+	private static GameObject prefabProjectile;
 
 	private GameObject launchPoint;
 	private bool aimingMode;

@@ -21,12 +21,14 @@ public class Obstacles : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag != "Projectile") {
+			Debug.Log ("was not a projectile");
 			return;
 		}
 		if (other.gameObject.name.Contains (matchingPrefab.name)) {
+			Debug.Log (this.gameObject + "destroys nearby objects");
 			destroyNearby ();
 		} else {
-
+			Debug.Log ("is destroyed");
 			Destroy (this.gameObject);
 		}
 	}
@@ -51,5 +53,6 @@ public class Obstacles : MonoBehaviour {
 				Destroy (obj);
 			}
 		}
+		Destroy (this.gameObject);
 	}
 }
