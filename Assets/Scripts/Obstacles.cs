@@ -29,6 +29,8 @@ public class Obstacles : MonoBehaviour {
 			destroyNearby ();
 		} else {
 			Debug.Log ("is destroyed");
+			GameManager.score += 2;
+			GameManager.updateScore ();
 			Destroy (this.gameObject);
 		}
 	}
@@ -46,6 +48,8 @@ public class Obstacles : MonoBehaviour {
 			nearbyObjects[i] = hitColliders[i].gameObject;
 			Debug.Log (nearbyObjects[i]);
 		}
+		GameManager.score += nearbyObjects.Length;
+		GameManager.updateScore ();
 
 		foreach (GameObject obj in nearbyObjects) {
 			if(obj.tag == "Obstacle"){

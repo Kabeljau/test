@@ -74,6 +74,8 @@ public class Slingshot : MonoBehaviour {
 		projectile.GetComponent<Rigidbody> ().isKinematic = true;
 
 
+
+
 	}
 
 	void Update(){
@@ -99,15 +101,25 @@ public class Slingshot : MonoBehaviour {
 		//set the projectile to the new position 
 		projectile.transform.position = launchPos + mouseDelta;
 
-
+		if (Input.GetMouseButtonUp (1)) {
+			Destroy (projectile);
+			aimingMode = false;
+		}
 
 		//check mouse button released  //fire it off!! Baaaaammmmmm!!!
 		if (Input.GetMouseButtonUp(0)) {
 			aimingMode = false;
+			GameManager.score -= 1;
+			GameManager.updateScore ();
 			launchPoint.SetActive(false);
 			projectile.GetComponent<Rigidbody> ().isKinematic = false;
 			projectile.GetComponent<Rigidbody> ().velocity = -mouseDelta * velocityMult;
+			Vector3 pos = transform.position; //set to zero again because sometimes it spawns at z = 7.something??
+			pos.z = 0;
+			projectile.transform.position = pos; 
+			if(CamFollow.s.poi != CamFollow.empty){
 			CamFollow.s.poi = projectile;
+			}
 			shotProjectile = true;
 		}
 

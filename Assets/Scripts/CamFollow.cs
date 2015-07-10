@@ -18,7 +18,8 @@ public class CamFollow : MonoBehaviour {
 
 	private GameObject slingshot;
 	private GameObject goal;
-	private GameObject empty;
+	public static GameObject empty;
+	public static GameObject lastPoi;
 
 	Vector3 destination;
 
@@ -33,8 +34,7 @@ public class CamFollow : MonoBehaviour {
 		minCamY = transform.position.y;
 		leftCam = transform.position.x;
 
-		trailRen = GetComponent<TrailRenderer> ();
-		trailRen.enabled = false;
+
 
 		slingshot = GameObject.FindWithTag ("Slingshot");
 		empty = GameObject.FindWithTag ("Empty");
@@ -47,19 +47,21 @@ public class CamFollow : MonoBehaviour {
 		} else {
 			setEmptyToMiddle(GO_left, GO_right);
 		}
-
+		lastPoi = poi;
 
 	}
 
 	void FixedUpdate(){
 		//check if poi is empty--- if there is no point of interes yet (in our case it would be the projectile)
 
+		Debug.Log ("poi:" + poi);
 
 		if (poi == null) {
-			trailRen.enabled = false;
+//			trailRen.enabled = false;
 
 			//set the destination to the zero vector
-			destination = Vector3.zero;
+			//destination = Vector3.zero;
+			destination = lastPoi.transform.position;
 
 			//Debug.Log ("vector Zero: " + Vector3.zero);
 			//Debug.Log ("position: " + transform.position);
@@ -67,6 +69,7 @@ public class CamFollow : MonoBehaviour {
 			//Debug.Log ("poi != null");
 			//get its position
 			destination = poi.transform.position;
+
 
 			//check if the poi is a projectile
 			if (poi.tag == "Projectile") {
@@ -87,15 +90,19 @@ public class CamFollow : MonoBehaviour {
 
 			destination.z = CamZ;
 
-			destination.x = Mathf.Max (minXY.x, destination.x); //prevents camera of jumping under the bottom----- not really?? :( 
-			destination.y = Mathf.Max (minXY.y, destination.y);
+		//	destination.x = Mathf.Max (minXY.x, destination.x); //prevents camera of jumping under the bottom----- not really?? :( 
+		//	destination.y = Mathf.Max (minXY.y, destination.y);
 
 
 		transform.position = Vector3.Lerp (transform.position, destination, speed * Time.deltaTime);
 
-		this.GetComponent<Camera> ().orthographicSize = 10 + destination.y;
+		this.GetComponent<Camera> ().orthographicSize = 5 + destination.y;
 		if (poi == empty) {
+			if(GO_left != null){
+				this.GetComponent<Camera> ().orthographicSize = getSize (GO_left ,GO_right)  + 5;
+			}else{
 			this.GetComponent<Camera> ().orthographicSize = getSize ()  + 2;
+			}
 		}
 		
 
@@ -103,6 +110,7 @@ public class CamFollow : MonoBehaviour {
 
 	public void setPoi(GameObject target){
 		poi = target;
+		lastPoi = target;
 		Debug.Log ("sets poi");
 	}
 
@@ -126,6 +134,9 @@ public class CamFollow : MonoBehaviour {
 	private float getSize(){
 		return ((Vector3.Distance (slingshot.transform.position, goal.transform.position)) / this.GetComponent <Camera> ().aspect) / 2;
 	}
+	private float getSize(GameObject A, GameObject B){
+		return ((Vector3.Distance (A.transform.position, B.transform.position)) / this.GetComponent <Camera> ().aspect) / 2;
 
+	}
 
 }
