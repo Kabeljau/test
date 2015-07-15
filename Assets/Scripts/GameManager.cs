@@ -2,15 +2,34 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
+
 public class GameManager : MonoBehaviour {
 
-	public static int score;
+	//public static int score;
 	public int minScore;
-	
+
+	public delegate void scoreChanged();
+	public static event scoreChanged OnScoreChange;
+
+	private static int Score;
+	public static int score{
+		get{return Score;}
+		set{
+			Score = value;
+			if(OnScoreChange != null){
+				OnScoreChange();
+			}		
+		}
+	}
 
 	public static Text scoreText;
 
+	public static bool scoreReached;
+
 	private Button final_projectile;
+
+
 
 
 
@@ -19,24 +38,25 @@ public class GameManager : MonoBehaviour {
 		scoreText = GameObject.Find ("scoreNumber").GetComponent<Text> ();
 		score = 0;
 		scoreText.text = "" + score;
+		scoreReached = false;
+		OnScoreChange += checkScore;
+		OnScoreChange += updateScore;
 
 		final_projectile = GameObject.FindWithTag ("finalProjectile").GetComponent<Button>();
-		final_projectile.interactable = false;
 	}
 
-	public static void updateScore(){
+	public void updateScore(){
 		scoreText.text = "" + score;
 	}
 
 	private void checkScore(){
 		if (score >= minScore) {
-			final_projectile.interactable = true;
+			scoreReached = true;
 		}
 	}
 
-	void Update(){
-		checkScore ();
-	}
+
+
 
 	public void quitGame(){
 		Application.Quit ();

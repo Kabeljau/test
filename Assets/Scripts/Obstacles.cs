@@ -30,7 +30,6 @@ public class Obstacles : MonoBehaviour {
 		} else {
 			Debug.Log ("is destroyed");
 			GameManager.score += 2;
-			GameManager.updateScore ();
 			Destroy (this.gameObject);
 		}
 	}
@@ -46,10 +45,9 @@ public class Obstacles : MonoBehaviour {
 		
 		for (int i = 0; i < hitColliders.Length; i++) {
 			nearbyObjects[i] = hitColliders[i].gameObject;
-			Debug.Log (nearbyObjects[i]);
+//			Debug.Log (nearbyObjects[i]);
 		}
 		GameManager.score += nearbyObjects.Length;
-		GameManager.updateScore ();
 
 		foreach (GameObject obj in nearbyObjects) {
 			if(obj.tag == "Obstacle"){

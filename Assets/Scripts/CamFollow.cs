@@ -54,7 +54,7 @@ public class CamFollow : MonoBehaviour {
 	void FixedUpdate(){
 		//check if poi is empty--- if there is no point of interes yet (in our case it would be the projectile)
 
-		Debug.Log ("poi:" + poi);
+//		Debug.Log ("poi:" + poi);
 
 		if (poi == null) {
 //			trailRen.enabled = false;

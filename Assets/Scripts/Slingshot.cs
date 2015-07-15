@@ -6,6 +6,8 @@ public class Slingshot : MonoBehaviour {
 	//Inspector fields
 	public GameObject defaultProjectilePrefab;
 
+	public CanvasGroup warning_scoreTooLow;
+
 	public float velocityMult;
 
 	private bool shotProjectile;
@@ -26,6 +28,8 @@ public class Slingshot : MonoBehaviour {
 		launchPoint = launchPointTrans.gameObject;
 		launchPoint.SetActive (false);
 		launchPos = launchPoint.transform.position;
+
+		warning_scoreTooLow.alpha = 0;
 
 		prefabProjectile = defaultProjectilePrefab;
 	}
@@ -110,7 +114,6 @@ public class Slingshot : MonoBehaviour {
 		if (Input.GetMouseButtonUp(0)) {
 			aimingMode = false;
 			GameManager.score -= 1;
-			GameManager.updateScore ();
 			launchPoint.SetActive(false);
 			projectile.GetComponent<Rigidbody> ().isKinematic = false;
 			projectile.GetComponent<Rigidbody> ().velocity = -mouseDelta * velocityMult;
@@ -122,15 +125,25 @@ public class Slingshot : MonoBehaviour {
 			}
 			shotProjectile = true;
 		}
-
-
-
-
-
 	}
 
+	public void selectFinalProjectile(GameObject prefab){
+		if (!GameManager.scoreReached) {
+			StartCoroutine ("showWarning");
+		} else {
+			selectProjectile (prefab);
+		}
+	}
 
-
+	private IEnumerator showWarning(){
+		bool b = true;
+		while (b) {
+			warning_scoreTooLow.alpha = 1;
+			b= false;
+			yield return new WaitForSeconds(2.3f);
+		}
+		warning_scoreTooLow.alpha = 0;
+	}
 
 
 
