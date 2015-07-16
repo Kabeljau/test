@@ -8,9 +8,13 @@ public class Goal : MonoBehaviour {
 	public GameObject ProjectileOfDeath;
 	public RawImage gameOverScreen;
 
+
 	void Awake(){
+
 		if (gameOverScreen != null) {
 			gameOverScreen.enabled = false;
+		} else {
+			Debug.Log ("no gameOverScreen assigned!!");
 		}
 	}
 
@@ -24,10 +28,12 @@ public class Goal : MonoBehaviour {
 			//set the static field to true
 			goalHit = true;
 
+			AudioListener.pause = true;
 			if (gameOverScreen != null) {
 				gameOverScreen.enabled = true;
 			}
 
+			Time.timeScale = 0;
 		}
 	}
 }

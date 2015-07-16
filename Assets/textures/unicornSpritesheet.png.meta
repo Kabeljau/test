@@ -1,0 +1,231 @@
+fileFormatVersion: 2
+guid: 64af54b4633d09f4584d1c97f3d689ec
+timeCreated: 1436979299
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: unicornSpritesheet_0
+    21300002: unicornSpritesheet_1
+    21300004: unicornSpritesheet_2
+    21300006: unicornSpritesheet_3
+    21300008: unicornSpritesheet_4
+    21300010: unicornSpritesheet_5
+    21300012: unicornSpritesheet_6
+    21300014: unicornSpritesheet_7
+    21300016: unicornSpritesheet_8
+    21300018: unicornSpritesheet_9
+    21300020: unicornSpritesheet_10
+    21300022: unicornSpritesheet_11
+    21300024: unicornSpritesheet_12
+    21300026: unicornSpritesheet_13
+    21300028: unicornSpritesheet_14
+    21300030: unicornSpritesheet_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: unicornSpritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 1608
+        width: 358
+        height: 356
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 1610
+        width: 328
+        height: 347
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1598
+        width: 340
+        height: 347
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1596
+        y: 1594
+        width: 344
+        height: 370
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1056
+        width: 352
+        height: 404
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 1086
+        width: 365
+        height: 403
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 1120
+        width: 385
+        height: 360
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 1112
+        width: 375
+        height: 357
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 584
+        width: 354
+        height: 356
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 586
+        width: 348
+        height: 350
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 574
+        width: 340
+        height: 354
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1596
+        y: 561
+        width: 344
+        height: 379
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 31
+        width: 352
+        height: 415
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 66
+        width: 365
+        height: 395
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 95
+        width: 385
+        height: 361
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: unicornSpritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 88
+        width: 375
+        height: 351
+      alignment: 7
+      pivot: {x: .5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,6 +12,7 @@ TagManager:
   - Launchpoint
   - Obstacle
   - finalProjectile
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - 
   - 
   - FallingObjects
-  - 
+  - surroundingColliders
   - 
   - 
   - 

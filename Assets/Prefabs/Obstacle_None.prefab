@@ -83,6 +83,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matchingPrefab: {fileID: 0}
+  sound_explosion: {fileID: 8300000, guid: c1800886a842c3740b338698ff4e7b6b, type: 3}
+  sound_doing: {fileID: 8300000, guid: ab34ed134e78aad4db448c4fd4821401, type: 3}
 --- !u!135 &13576210
 SphereCollider:
   m_ObjectHideFlags: 1

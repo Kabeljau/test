@@ -23,5 +23,13 @@ public class UIController : MonoBehaviour {
 		}
 	}
 
+	public void showImage(Image playImage){
+		playImage.enabled = true;
+	}
+
+	public void changeScene(string scene){
+		Application.LoadLevel (scene);
+	}
+
 
 }

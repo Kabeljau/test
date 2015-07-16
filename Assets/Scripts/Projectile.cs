@@ -9,6 +9,9 @@ public class Projectile : MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision other){
+		if (Slingshot.aimingMode) {
+			return;
+		}
 		Debug.Log ("Projectile has hit obstacle");
 		if (particle != null) {
 			GameObject GO = GameObject.Instantiate (particle, transform.position, new Quaternion ()) as GameObject;

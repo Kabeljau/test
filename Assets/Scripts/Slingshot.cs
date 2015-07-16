@@ -17,7 +17,7 @@ public class Slingshot : MonoBehaviour {
 	private static GameObject prefabProjectile;
 
 	private GameObject launchPoint;
-	private bool aimingMode;
+	public static bool aimingMode;
 
 	private Vector3 launchPos;
 	private GameObject projectile;
@@ -86,44 +86,45 @@ public class Slingshot : MonoBehaviour {
 		//check aiming mode
 		if (!aimingMode)
 			return;
+		if (projectile != null) {
+			//get the mouse position in 3d space
+			Vector3 mousePos2D = Input.mousePosition;
+			mousePos2D.z = -Camera.main.transform.position.z; //always on the same level of camera
+			Vector3 mousePos3D = Camera.main.ScreenToWorldPoint (mousePos2D); 
 
-		//get the mouse position in 3d space
-		Vector3 mousePos2D = Input.mousePosition;
-		mousePos2D.z = -Camera.main.transform.position.z; //always on the same level of camera
-		Vector3 mousePos3D = Camera.main.ScreenToWorldPoint (mousePos2D); 
-
-		//calculate vector between mouse position and launch position
-		Vector3 mouseDelta = mousePos3D - launchPos;
+			//calculate vector between mouse position and launch position
+			Vector3 mouseDelta = mousePos3D - launchPos;
 
 
-		//constrain the delta to radius of the shere collider
-		float maxMagnitude = this.GetComponent<SphereCollider> ().radius;
+			//constrain the delta to radius of the shere collider
+			float maxMagnitude = this.GetComponent<SphereCollider> ().radius;
 
-		mouseDelta = Vector3.ClampMagnitude (mouseDelta, maxMagnitude);
+			mouseDelta = Vector3.ClampMagnitude (mouseDelta, maxMagnitude);
 
 	
-		//set the projectile to the new position 
-		projectile.transform.position = launchPos + mouseDelta;
+			//set the projectile to the new position 
+			projectile.transform.position = launchPos + mouseDelta;
 
-		if (Input.GetMouseButtonUp (1)) {
-			Destroy (projectile);
-			aimingMode = false;
-		}
-
-		//check mouse button released  //fire it off!! Baaaaammmmmm!!!
-		if (Input.GetMouseButtonUp(0)) {
-			aimingMode = false;
-			GameManager.score -= 1;
-			launchPoint.SetActive(false);
-			projectile.GetComponent<Rigidbody> ().isKinematic = false;
-			projectile.GetComponent<Rigidbody> ().velocity = -mouseDelta * velocityMult;
-			Vector3 pos = transform.position; //set to zero again because sometimes it spawns at z = 7.something??
-			pos.z = 0;
-			projectile.transform.position = pos; 
-			if(CamFollow.s.poi != CamFollow.empty){
-			CamFollow.s.poi = projectile;
+			if (Input.GetMouseButtonUp (1)) {
+				Destroy (projectile);
+				aimingMode = false;
 			}
-			shotProjectile = true;
+
+			//check mouse button released  //fire it off!! Baaaaammmmmm!!!
+			if (Input.GetMouseButtonUp (0)) {
+				aimingMode = false;
+				GameManager.score -= 1;
+				launchPoint.SetActive (false);
+				projectile.GetComponent<Rigidbody> ().isKinematic = false;
+				projectile.GetComponent<Rigidbody> ().velocity = -mouseDelta * velocityMult;
+				Vector3 pos = transform.position; //set to zero again because sometimes it spawns at z = 7.something??
+				pos.z = 0;
+				projectile.transform.position = pos; 
+				if (CamFollow.s.poi != CamFollow.empty) {
+					CamFollow.s.poi = projectile;
+				}
+				shotProjectile = true;
+			}
 		}
 	}
 
